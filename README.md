@@ -68,8 +68,6 @@ David Ruffini, <br>
 Collaboro come data journalist con il blog Info Data del Sole 24 Ore. <br>
 Email: [davidruffini98@gmail.com](mailto:davidruffini98@gmail.com) <br>
 Sito personale: [www.davidruffini.com](https://www.davidruffini.com) <br>
-X: (https://x.com/davidruffini_) <br>
-Instagram: (https://www.instagram.com/david_ruffini/) <br>
 Linkedin: [https://www.linkedin.com/in/david-ruffini-56a5a1161/](https://www.linkedin.com/in/david-ruffini-56a5a1161/) <br> <br>
 Le segnalazioni sono sempre benvenute. 
 
