@@ -6,10 +6,10 @@ Script in R per lo scraping e l'aggiornamento automatico dei dati relativi ai pe
 
 Questo progetto esegue un **web scraping automatico** dei dati pubblicati dal Ministero della Giustizia e da Ristretti Orizzonti sugli istituti penitenziari italiani. I dati vengono aggiornati quotidianamente e salvati in tre **fogli di Google Sheets**, con informazioni su:
 
-* Capacità e presenza dei detenuti
-* Presenze del personale (Polizia Penitenziaria, educatori, amministrativi)
-* Strutture e servizi interni (docce, aule, mense, ecc.)
-* Morti in carcere
+* Capacità e presenza dei detenuti;
+* Presenze del personale (Polizia Penitenziaria, educatori, amministrativi);
+* Strutture e servizi interni (docce, aule, mense, ecc.);
+* Morti in carcere.
   
 Ho raccolto i dati per ogni singolo istituto, calcolato il tasso di sovraffollamento - singolo e nazionale-, aggiunto le coordinate geografiche e la regione.
 
@@ -20,11 +20,11 @@ Ho raccolto i dati per ogni singolo istituto, calcolato il tasso di sovraffollam
 
 ## Tecnologie utilizzate
 
-* `R` + `tidyverse` per manipolazione dati
-* `rvest` per scraping HTML
-* `furrr` e `future` per parallelizzazione
-* `googlesheets4` per connessione a Google Sheets
-* `openxlsx` per esportazione
+* `R` + `tidyverse` per la manipolazione dati;
+* `rvest` per lo scraping;
+* `furrr` e `future` per la parallelizzazione, al fine di velocizzare lo scraping;
+* `googlesheets4` per la connessione a Google Sheets;
+* `openxlsx` per l'esportazione.
 
 ---
 
@@ -64,9 +64,9 @@ Lo script è pensato per essere eseguito giornalmente.
 
 ## Autore
 
-David Ruffini
-Email: [davidruffini98@gmail.com](mailto:davidruffini98@gmail.com)
-Le segnalazioni sono sempre benvenute.
+David Ruffini <br>
+Email: [davidruffini98@gmail.com](mailto:davidruffini98@gmail.com) <br>
+Le segnalazioni sono sempre benvenute. 
 
 ---
 
