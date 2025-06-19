@@ -4,7 +4,7 @@ Script in R per lo scraping e l'aggiornamento automatico dei dati relativi ai pe
 
 ## Il progetto
 
-Questo progetto esegue un **web scraping automatico** dei dati pubblicati dal Ministero della Giustizia e da Ristretti Orizzonti sugli istituti penitenziari italiani. I dati vengono aggiornati quotidianamente e salvati in due **fogli di Google Sheets**, con informazioni su:
+Questo progetto esegue un **web scraping automatico** dei dati pubblicati dal Ministero della Giustizia e da Ristretti Orizzonti sugli istituti penitenziari italiani. I dati vengono aggiornati quotidianamente e salvati in tre **fogli di Google Sheets**, con informazioni su:
 
 * Capacità e presenza dei detenuti
 * Presenze del personale (Polizia Penitenziaria, educatori, amministrativi)
@@ -13,8 +13,8 @@ Questo progetto esegue un **web scraping automatico** dei dati pubblicati dal Mi
   
 Ho raccolto i dati per ogni singolo istituto, calcolato il tasso di sovraffollamento - singolo e nazionale-, aggiunto le coordinate geografiche e la regione.
 
-## **Il progetto visualizzabile online qui**:
-👉 [www.davidruffini.com/stato-delle-carceri.html](https://www.davidruffini.com/stato-delle-carceri.html)
+## **Il progetto è visualizzabile online qui**:
+[www.davidruffini.com/stato-delle-carceri.html](https://www.davidruffini.com/stato-delle-carceri.html)
 
 ---
 
