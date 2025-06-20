@@ -4,7 +4,7 @@ Script in R per lo scraping e l'aggiornamento automatico dei dati relativi ai pe
 
 ## Il progetto
 
-Questo progetto esegue un **web scraping automatico** dei dati pubblicati dal Ministero della Giustizia e da Ristretti Orizzonti sugli istituti penitenziari italiani. I dati vengono aggiornati quotidianamente e salvati in tre **fogli di Google Sheets**, con informazioni su:
+Questo progetto esegue un **web scraping automatico** dei dati pubblicati dal Ministero della Giustizia e da Ristretti Orizzonti sugli istituti penitenziari italiani. I dati vengono aggiornati quotidianamente con informazioni su:
 
 * Capacità e presenza dei detenuti;
 * Presenze del personale (Polizia Penitenziaria, educatori, amministrativi);
@@ -30,7 +30,7 @@ Ho raccolto i dati per ogni singolo istituto, calcolato il tasso di sovraffollam
 
 ## Sicurezza
 
-La chiave di autenticazione per l’accesso ai Google Sheets è **nascosta** e **non inclusa nel repository**, in quanto salvata in locale con `gs4_auth(cache = ".secrets")` e **non tracciata da Git**.
+La chiave di autenticazione per l’accesso ai Google Sheets è **nascosta** e **non inclusa nel repository**.
 
 ---
 
