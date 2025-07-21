@@ -11,7 +11,7 @@ Questo progetto esegue un **web scraping automatico** dei dati pubblicati dal Mi
 * Strutture e servizi interni (docce, aule, mense, ecc.);
 * Morti in carcere.
   
-Ho raccolto i dati per ogni singolo istituto, calcolato il tasso di sovraffollamento - singolo e nazionale-, aggiunto le coordinate geografiche e la regione.
+Ho raccolto i dati per ogni singolo istituto, calcolato il tasso di sovraffollamento - singolo e nazionale, aggiunto le coordinate geografiche e la regione.
 
 ## **Il progetto è visualizzabile online qui**:
 [www.davidruffini.com/stato-delle-carceri.html](https://www.davidruffini.com/stato-delle-carceri.html)
