@@ -58,7 +58,28 @@ I dati vengono salvati su tre fogli principali:
 
 ## Pianificazione
 
-Lo script è pensato per essere eseguito giornalmente.
+Lo script viene eseguito automaticamente ogni giorno tramite GitHub Actions
+(workflow `.github/workflows/aggiorna-dati.yml`), quindi non dipende più da un
+PC acceso. Può anche essere lanciato manualmente dalla tab "Actions" del
+repository ("Run workflow").
+
+### Setup del service account (una tantum)
+
+Per l'autenticazione a Google Sheets in CI serve un service account Google,
+perché l'auth interattiva usata in locale non funziona in un ambiente headless:
+
+1. Su [Google Cloud Console](https://console.cloud.google.com/), crea (o riusa)
+   un progetto, abilita la **Google Sheets API**, poi crea un service account
+   e genera una chiave in formato JSON.
+2. Condividi entrambi i Google Sheet (quello degli istituti e quello dello
+   storico) con l'email del service account (tipo
+   `nome@progetto.iam.gserviceaccount.com`), come editor.
+3. Nel repository GitHub: Settings → Secrets and variables → Actions → New
+   repository secret, nome `GOOGLE_SERVICE_ACCOUNT_JSON`, incolla il
+   contenuto del file JSON della chiave.
+
+In locale lo script continua a funzionare come prima, con `gs4_auth(cache =
+".secrets", email = ...)`.
 
 ---
 
