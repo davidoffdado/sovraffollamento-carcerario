@@ -27,7 +27,7 @@ if (sa_key_path != "") {
 
 
 #### NUOVI DATI ####
-url = "http://www.ristretti.it/areestudio/disagio/ricerca/2010/morti.carcere.xls"
+url = "http://www.ristretti.it/areestudio/disagio/ricerca/morti.carcere.xls"
 destfile = tempfile(fileext = ".xls")
 GET(url, write_disk(destfile, overwrite = TRUE))
 
