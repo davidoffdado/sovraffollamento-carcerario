@@ -36,11 +36,30 @@ La chiave di autenticazione per l’accesso ai Google Sheets è **nascosta** e *
 
 ## Output
 
-I dati vengono salvati su tre fogli principali:
+I dati vengono salvati su Google Sheets:
 
-1. `Dati` – dataset aggiornato con tasso di sovraffollamento
-2. `Storico` – storico giornaliero del tasso nazionale
-3. `Dati_MortiCarcere` – elenco aggiornato delle morti in carcere
+1. `Dati` - dataset aggiornato con tasso di sovraffollamento (fotografia del giorno)
+2. `DatiRegioni` - tasso di sovraffollamento per regione, calcolato come detenuti della regione diviso posti disponibili della regione (fino a novembre 2026 era la media semplice dei tassi degli istituti)
+3. `Morti` - morti in carcere per anno e causa, senza dati personali (nel foglio pubblico degli istituti)
+4. `Storico` - storico giornaliero del tasso nazionale
+5. `Dati_MortiCarcere` - elenco aggiornato delle morti in carcere (foglio privato)
+
+### Storico per istituto
+
+Ogni giorno la fotografia di tutti gli istituti si aggiunge a
+[`data/storico-istituti.csv`](data/storico-istituti.csv) (una riga per istituto per giorno: data,
+detenuti, posti, posti non disponibili, tasso, agenti effettivi e previsti), di cui il workflow fa il commit.
+
+Le date dal 15 giugno 2025 al 18 settembre 2026 non sono giornaliere: sono state ricostruite dalle
+versioni pubblicate della tabella Datawrapper del progetto (colonna `fonte`). L'8 e il 25 agosto 2025
+sono incomplete (169 e 167 istituti su 190). Dal 4 novembre 2026 i dati sono giornalieri.
+
+### Controlli
+
+Prima di scrivere, lo script controlla che siano stati letti almeno il 90% degli istituti e che il
+tasso nazionale (80-200%) e il numero di detenuti (40.000-90.000) siano plausibili; altrimenti si
+ferma, il workflow fallisce e i dati del giorno prima restano invariati. Gli istituti che non
+rispondono mantengono i dati del giorno precedente, con la loro data di aggiornamento.
 
 ---
 

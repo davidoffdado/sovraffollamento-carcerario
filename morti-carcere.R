@@ -46,8 +46,9 @@ dati = dati %>%
 foglio = foglio %>%
   mutate(Data = as.Date(Data))
 
-# filtro solamente le nuove righe
-dati_da_aggiungere = anti_join(dati, foglio, by = "Data")
+# filtro solamente le nuove righe: confronto per persona e data, non solo per data
+# (prima due morti nello stesso giorno venivano contate una volta sola)
+dati_da_aggiungere = anti_join(dati, foglio, by = c("Cognome", "Nome", "Data"))
 
 # se ci sono nuove righe, le aggiungo; altrimenti, restituisce un messaggio 
 if (nrow(dati_da_aggiungere) > 0) {
@@ -55,6 +56,21 @@ if (nrow(dati_da_aggiungere) > 0) {
 } else {
   message("Nessun dato da aggiungere.")
 }
+
+#### TOTALI PER ANNO E CAUSA (per la pagina pubblica) ####
+# il foglio delle morti contiene nomi e cognomi e resta privato: nella scheda "Morti" del foglio
+# pubblico degli istituti scrivo solo i conteggi, calcolati sul file completo di Ristretti Orizzonti
+totali_morti = dati %>%
+  filter(!is.na(Data), !is.na(Causa)) %>%
+  mutate(
+    anno = as.integer(format(Data, "%Y")),
+    causa = trimws(Causa, whitespace = "[\\h\\v]"), # toglie anche gli spazi non separabili
+    causa = paste0(toupper(substr(causa, 1, 1)), tolower(substr(causa, 2, nchar(causa))))
+  ) %>%
+  count(anno, causa, name = "morti") %>%
+  arrange(anno, causa)
+
+sheet_write(totali_morti, ss = "1wH9i9hc_B7Q91KklHFc8FHFdGrZ82SsDB1gHhNPaumg", sheet = "Morti")
 
 
 
