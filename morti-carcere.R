@@ -74,3 +74,29 @@ sheet_write(totali_morti, ss = "1wH9i9hc_B7Q91KklHFc8FHFdGrZ82SsDB1gHhNPaumg", s
 
 
 
+
+#### MORTI PER ISTITUTO (per le schede della pagina pubblica) ####
+# I nomi degli istituti di Ristretti Orizzonti sono scritti liberamente: l'abbinamento ai codici del
+# Ministero sta in data/abbinamento-morti-istituti.csv (costruito il 2026-11-04 con un abbinamento
+# automatico prudente e alcune correzioni a mano). Restano fuori i nomi ambigui (es. "Roma Rebibbia",
+# "Firenze", citta' con piu' istituti), gli OPG chiusi, CIE/CPR, questure e domiciliari.
+# I nomi nuovi non presenti nel file vengono elencati qui sotto: per contarli basta aggiungerli al CSV.
+abbinamento = read.csv("data/abbinamento-morti-istituti.csv", colClasses = "character")
+morti_istituti = dati %>%
+  filter(!is.na(Data), !is.na(Causa), !is.na(Istituto)) %>%
+  mutate(
+    anno = as.integer(format(Data, "%Y")),
+    causa = trimws(Causa, whitespace = "[\\h\\v]"),
+    causa = paste0(toupper(substr(causa, 1, 1)), tolower(substr(causa, 2, nchar(causa)))),
+    ristretti = Istituto
+  ) %>%
+  left_join(abbinamento, by = "ristretti")
+non_abbinati = morti_istituti %>% filter(is.na(ID_istituto)) %>% count(ristretti, sort = TRUE)
+message("Morti attribuite a un istituto: ", sum(!is.na(morti_istituti$ID_istituto)), " su ", nrow(morti_istituti),
+        ". Nomi non abbinati piu' frequenti: ", paste(head(non_abbinati$ristretti, 10), collapse = "; "))
+morti_istituti = morti_istituti %>%
+  filter(!is.na(ID_istituto)) %>%
+  count(ID_istituto, anno, causa, name = "morti") %>%
+  arrange(ID_istituto, anno, causa)
+
+sheet_write(morti_istituti, ss = "1wH9i9hc_B7Q91KklHFc8FHFdGrZ82SsDB1gHhNPaumg", sheet = "MortiIstituti")

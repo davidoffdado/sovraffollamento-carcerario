@@ -41,8 +41,9 @@ I dati vengono salvati su Google Sheets:
 1. `Dati` - dataset aggiornato con tasso di sovraffollamento (fotografia del giorno)
 2. `DatiRegioni` - tasso di sovraffollamento per regione, calcolato come detenuti della regione diviso posti disponibili della regione (fino a novembre 2026 era la media semplice dei tassi degli istituti)
 3. `Morti` - morti in carcere per anno e causa, senza dati personali (nel foglio pubblico degli istituti)
-4. `Storico` - storico giornaliero del tasso nazionale
-5. `Dati_MortiCarcere` - elenco aggiornato delle morti in carcere (foglio privato)
+4. `MortiIstituti` - morti in carcere per istituto, anno e causa (vedi sotto)
+5. `Storico` - storico giornaliero del tasso nazionale
+6. `Dati_MortiCarcere` - elenco aggiornato delle morti in carcere (foglio privato)
 
 ### Storico per istituto
 
@@ -53,6 +54,15 @@ detenuti, posti, posti non disponibili, tasso, agenti effettivi e previsti), di 
 Le date dal 15 giugno 2025 al 18 settembre 2026 non sono giornaliere: sono state ricostruite dalle
 versioni pubblicate della tabella Datawrapper del progetto (colonna `fonte`). L'8 e il 25 agosto 2025
 sono incomplete (169 e 167 istituti su 190). Dal 4 novembre 2026 i dati sono giornalieri.
+
+### Morti per istituto
+
+Ristretti Orizzonti indica il carcere di ogni decesso con un nome scritto liberamente (es. "Santa Maria C.V. (Ce)").
+L'abbinamento ai codici del Ministero è in [`data/abbinamento-morti-istituti.csv`](data/abbinamento-morti-istituti.csv):
+un nome è attribuito a un istituto solo se corrisponde a quell'istituto e a nessun altro, con alcune correzioni a mano
+(es. "Padova Reclusione" = Padova Nuovo Complesso). Restano fuori i nomi ambigui ("Roma Rebibbia", "Firenze" e le altre
+città con più istituti), gli OPG chiusi, CIE/CPR, questure e domiciliari: a novembre 2026 sono attribuite 2.181 morti su
+2.564 (85%). I nomi nuovi non abbinati vengono stampati nel log del workflow; per contarli basta aggiungerli al CSV.
 
 ### Controlli
 
@@ -99,6 +109,15 @@ perché l'auth interattiva usata in locale non funziona in un ambiente headless:
 
 In locale lo script continua a funzionare come prima, con `gs4_auth(cache =
 ".secrets", email = ...)`.
+
+---
+
+## Licenza dei dati
+
+I dati raccolti ed elaborati da questo progetto (fogli pubblici e file in `data/`) sono rilasciati con licenza
+[Creative Commons Attribuzione 4.0 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/deed.it): si possono usare,
+modificare e ripubblicare liberamente, anche per scopi commerciali, citando la fonte, ad esempio
+"Fonte: David Ruffini, Lo stato delle carceri italiane, su dati Ministero della Giustizia e Ristretti Orizzonti".
 
 ---
 
